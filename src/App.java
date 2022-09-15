@@ -11,26 +11,26 @@ public class App {
         String contido = sc.nextLine();
         String desejado = sc.nextLine();
 
-        Long c1 = Long.parseLong(capacidade.split(" ")[0]);
-        Long c2 = Long.parseLong(capacidade.split(" ")[1]);
-        Long c3 = Long.parseLong(capacidade.split(" ")[2]);
+        int c1 = Integer.parseInt(capacidade.split(" ")[0]);
+        int c2 = Integer.parseInt(capacidade.split(" ")[1]);
+        int c3 = Integer.parseInt(capacidade.split(" ")[2]);
 
-        Long a1 = Long.parseLong(contido.split(" ")[0]);
-        Long a2 = Long.parseLong(contido.split(" ")[1]);
-        Long a3 = Long.parseLong(contido.split(" ")[2]);
+        int a1 = Integer.parseInt(contido.split(" ")[0]);
+        int a2 = Integer.parseInt(contido.split(" ")[1]);
+        int a3 = Integer.parseInt(contido.split(" ")[2]);
 
-        Long t1 = Long.parseLong(desejado.split(" ")[0]);
-        Long t2 = Long.parseLong(desejado.split(" ")[1]);
-        Long t3 = Long.parseLong(desejado.split(" ")[2]);
+        int t1 = Integer.parseInt(desejado.split(" ")[0]);
+        int t2 = Integer.parseInt(desejado.split(" ")[1]);
+        int t3 = Integer.parseInt(desejado.split(" ")[2]);
 
-        Long[] capacidades = new Long[] { c1, c2, c3 }; 
-        Long[] valores = new Long[] { a1, a2, a3 };
-        Long[] valoresDesejados = new Long[] { t1, t2, t3 };
+        int[] capacidades = new int[] { c1, c2, c3 }; 
+        int[] valores = new int[] { a1, a2, a3 };
+        int[] valoresDesejados = new int[] { t1, t2, t3 };
 
-        long quantOperacoes = -1;
+        int quantOperacoes = -1;
         arvore = new ArvoreSeisNodos((long) 0, valores);
 
-        long posicao = insereNodos(0, valoresDesejados, capacidades);
+        long posicao = insereNodos((long) 0, valoresDesejados, capacidades);
 
         quantOperacoes = arvore.nivel(posicao);
 
@@ -43,7 +43,7 @@ public class App {
         sc.close();
     }
 
-    public static long insereNodos(long pai, Long[] desejado, Long[] capacidade) {
+    public static long insereNodos(long pai, int[] desejado, int[] capacidade) {
         boolean achou = false;
         Jarro jarro1, jarro2, jarro3;
         jarro1 = new Jarro(capacidade[0], arvore.getValores(pai)[0], desejado[0]);
@@ -183,7 +183,7 @@ public class App {
     public static Long jarro1jarro2(Long pai, Jarro jarro1, Jarro jarro2, Jarro jarro3) {
         long r = 0;
         if (jarro1.transfere(jarro2)) {
-            Long[] novosValores = new Long[] {jarro1.getA(), jarro2.getA(), jarro3.getA() };
+            int[] novosValores = new int[] {jarro1.getA(), jarro2.getA(), jarro3.getA() };
             r = arvore.inserir1(novosValores, pai);
         }
         return r;
@@ -192,7 +192,7 @@ public class App {
     public static Long jarro1jarro3(Long pai, Jarro jarro1, Jarro jarro2, Jarro jarro3) {
         long r = 0;
         if (jarro1.transfere(jarro3)) {
-            Long[] novosValores = new Long[] { jarro1.getA(), jarro2.getA(), jarro3.getA() };
+            int[] novosValores = new int[] { jarro1.getA(), jarro2.getA(), jarro3.getA() };
             r = arvore.inserir2(novosValores, pai);
         }
         return r;
@@ -201,7 +201,7 @@ public class App {
     public static Long jarro2jarro1(Long pai, Jarro jarro1, Jarro jarro2, Jarro jarro3) {
         long r = 0;
         if (jarro2.transfere(jarro1)) {
-            Long[] novosValores = new Long[] { jarro1.getA(), jarro2.getA(), jarro3.getA() };
+            int[] novosValores = new int[] { jarro1.getA(), jarro2.getA(), jarro3.getA() };
             r = arvore.inserir3(novosValores, pai);
         }
         return r;
@@ -210,7 +210,7 @@ public class App {
     public static Long jarro2jarro3(Long pai, Jarro jarro1, Jarro jarro2, Jarro jarro3) {
         long r = 0;
         if (jarro2.transfere(jarro3)) {
-            Long[] novosValores = new Long[] { jarro1.getA(), jarro2.getA(), jarro3.getA() };
+            int[] novosValores = new int[] { jarro1.getA(), jarro2.getA(), jarro3.getA() };
             r = arvore.inserir4(novosValores, pai);
         }
         return r;
@@ -219,7 +219,7 @@ public class App {
     public static Long jarro3jarro1(Long pai, Jarro jarro1, Jarro jarro2, Jarro jarro3) {
         long r = 0;
         if (jarro3.transfere(jarro1)) {
-            Long[] novosValores = new Long[] { jarro1.getA(), jarro2.getA(), jarro3.getA() };
+            int[] novosValores = new int[] { jarro1.getA(), jarro2.getA(), jarro3.getA() };
             r = arvore.inserir5(novosValores, pai);
         }
         return r;
@@ -228,7 +228,7 @@ public class App {
     public static Long jarro3jarro2(Long pai, Jarro jarro1, Jarro jarro2, Jarro jarro3) {
         long r = 0;
         if (jarro3.transfere(jarro2)) {
-            Long[] novosValores = new Long[] { jarro1.getA(), jarro2.getA(), jarro3.getA() };
+            int[] novosValores = new int[] { jarro1.getA(), jarro2.getA(), jarro3.getA() };
             r = arvore.inserir6(novosValores, pai);
         }
         return r;

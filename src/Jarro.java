@@ -1,12 +1,12 @@
 public class Jarro {
 
-    private long c;
-    private long a;
-    private long t;
+    private int c;
+    private int a;
+    private int t;
     private boolean jarroCheio;
     private boolean quantidadeDesejada;
 
-    public Jarro(long c, long a, long t) {
+    public Jarro(int c, int a, int t) {
         this.c = c;
         this.a = a;
         this.t = t;
@@ -30,19 +30,19 @@ public class Jarro {
         }
     }
 
-    public long getC() {
+    public int getC() {
         return c;
     }
 
-    public long getA() {
+    public int getA() {
         return a;
     }
 
-    public long getT() {
+    public int getT() {
         return t;
     }
 
-    public void setA(long a) {
+    public void setA(int a) {
         this.a = a;
     }
 
@@ -64,7 +64,7 @@ public class Jarro {
         }
 
         if (destino.getC() - destino.getA() < this.getA()) {
-            long sobra = Math.abs(destino.getC() - destino.getA() - this.getA());
+            int sobra = Math.abs(destino.getC() - destino.getA() - this.getA());
             destino.setA(destino.getA() + this.getA() - sobra);
             this.setA(sobra);
 

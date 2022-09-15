@@ -1,14 +1,13 @@
-import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
 public class ArvoreSeisNodos {
 
-    private Dictionary<Long, Long[]> nodos;
+    private Dictionary<Long, int[]> nodos;
 
-    public ArvoreSeisNodos(Long nodoInicial, Long[] valores) {
-        nodos = new Hashtable<Long, Long[]>();
+    public ArvoreSeisNodos(Long nodoInicial, int[] valores) {
+        nodos = new Hashtable<Long, int[]>();
         nodos.put(nodoInicial, valores);
     }
 
@@ -23,7 +22,7 @@ public class ArvoreSeisNodos {
     //pai de i
     private Long parent(Long i) {return (long) Math.floor((i - 1) / 6);}
 
-    public long inserir1(Long[] novoValor, Long pai) {
+    public long inserir1(int[] novoValor, Long pai) {
         if (procura(novoValor)) {
             return 0;
         }
@@ -33,7 +32,7 @@ public class ArvoreSeisNodos {
         return posicao;
     }
 
-    public long inserir2(Long[] novoValor, Long pai) {
+    public long inserir2(int[] novoValor, Long pai) {
         if (procura(novoValor)) {
             return 0;
         }
@@ -42,7 +41,7 @@ public class ArvoreSeisNodos {
         return posicao;
     }
 
-    public long inserir3(Long[] novoValor, Long pai) {
+    public long inserir3(int[] novoValor, Long pai) {
         if (procura(novoValor)) {
             return 0;
         }
@@ -51,7 +50,7 @@ public class ArvoreSeisNodos {
         return posicao;
     }
 
-    public long inserir4(Long[] novoValor, Long pai) {
+    public long inserir4(int[] novoValor, Long pai) {
         if (procura(novoValor)) {
             return 0;
         }
@@ -60,7 +59,7 @@ public class ArvoreSeisNodos {
         return posicao;
     }
 
-    public long inserir5(Long[] novoValor, Long pai) {
+    public long inserir5(int[] novoValor, Long pai) {
         if (procura(novoValor)) {
             return 0;
         }
@@ -69,7 +68,7 @@ public class ArvoreSeisNodos {
         return posicao;
     }
 
-    public long inserir6(Long[] novoValor, Long pai) {
+    public long inserir6(int[] novoValor, Long pai) {
         if (procura(novoValor)) {
             return 0;
         }
@@ -78,8 +77,8 @@ public class ArvoreSeisNodos {
         return posicao;
     }
 
-    public Long nivel(long posicao) {
-        long cont = 0;
+    public int nivel(long posicao) {
+        int cont = 0;
         long i = posicao;
         while(i > 0){
             i = parent(i);
@@ -88,19 +87,19 @@ public class ArvoreSeisNodos {
         return cont;
     }
 
-    public boolean encontrou(Long[] quantDesejada, long i){
-        Long[] aux = nodos.get(i);
+    public boolean encontrou(int[] quantDesejada, long i){
+        int[] aux = nodos.get(i);
         if (aux[0] == quantDesejada[0] && aux[1] == quantDesejada[1] && aux[2] == quantDesejada[2]) {
             return true;
         }
         return false;
     }
 
-    public boolean procura(Long[] novoValor) {
+    public boolean procura(int[] novoValor) {
         Enumeration<Long> chaves = nodos.keys();
         while (chaves.hasMoreElements()){
             Long chave = chaves.nextElement();
-            Long[] a = nodos.get(chave);
+            int[] a = nodos.get(chave);
             if (a[0] == novoValor[0] && a[1] == novoValor[1] && a[2] == novoValor[2]) {
                 return true;
             }
@@ -108,7 +107,7 @@ public class ArvoreSeisNodos {
         return false;       
     }
 
-    public Long[] getValores(Long i){
+    public int[] getValores(Long i){
         return nodos.get(i);
     }
 
