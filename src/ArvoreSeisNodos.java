@@ -24,16 +24,17 @@ public class ArvoreSeisNodos {
     private Long parent(Long i) {return (long) Math.floor((i - 1) / 6);}
 
     public long inserir1(Long[] novoValor, Long pai) {
-        if (verificaSeRepetido(novoValor)) {
+        if (procura(novoValor)) {
             return 0;
         }
+
         Long posicao = nodo1(pai);
         nodos.put(posicao, novoValor);
         return posicao;
     }
 
     public long inserir2(Long[] novoValor, Long pai) {
-        if (verificaSeRepetido(novoValor)) {
+        if (procura(novoValor)) {
             return 0;
         }
         Long posicao = nodo2(pai);
@@ -42,7 +43,7 @@ public class ArvoreSeisNodos {
     }
 
     public long inserir3(Long[] novoValor, Long pai) {
-        if (verificaSeRepetido(novoValor)) {
+        if (procura(novoValor)) {
             return 0;
         }
         Long posicao = nodo3(pai);
@@ -51,7 +52,7 @@ public class ArvoreSeisNodos {
     }
 
     public long inserir4(Long[] novoValor, Long pai) {
-        if (verificaSeRepetido(novoValor)) {
+        if (procura(novoValor)) {
             return 0;
         }
         Long posicao = nodo4(pai);
@@ -60,7 +61,7 @@ public class ArvoreSeisNodos {
     }
 
     public long inserir5(Long[] novoValor, Long pai) {
-        if (verificaSeRepetido(novoValor)) {
+        if (procura(novoValor)) {
             return 0;
         }
         Long posicao = nodo5(pai);
@@ -69,7 +70,7 @@ public class ArvoreSeisNodos {
     }
 
     public long inserir6(Long[] novoValor, Long pai) {
-        if (verificaSeRepetido(novoValor)) {
+        if (procura(novoValor)) {
             return 0;
         }
         Long posicao = nodo6(pai);
@@ -77,37 +78,25 @@ public class ArvoreSeisNodos {
         return posicao;
     }
 
-    public Long encontraQuantidadeAguaDesejada(Long[] quantDesejada) {
-        ArrayList<Long> resultados = new ArrayList<>();
-        Enumeration<Long> chaves = nodos.keys();
-        while (chaves.hasMoreElements()){
-            Long chave = chaves.nextElement();
-            Long[] a = nodos.get(chave);
-            if (a[0] == quantDesejada[0] && a[1] == quantDesejada[1] && a[2] == quantDesejada[2]) {
-                resultados.add(chave);
-            }
+    public Long nivel(long posicao) {
+        long cont = 0;
+        long i = posicao;
+        while(i > 0){
+            i = parent(i);
+            cont++;
         }
-
-        Long aux = (long) -1;
-        for (Long Long : resultados) {
-            Long i = Long;
-            Long cont = (long) 0;
-
-            while(i > 0){
-                i = parent(i);
-                cont++;
-            }
-
-            if(aux == -1){
-                aux = cont;
-            }else if(cont < aux){
-                aux = cont;
-            }
-        }
-        return aux;
+        return cont;
     }
 
-    public boolean verificaSeRepetido(Long[] novoValor) {
+    public boolean encontrou(Long[] quantDesejada, long i){
+        Long[] aux = nodos.get(i);
+        if (aux[0] == quantDesejada[0] && aux[1] == quantDesejada[1] && aux[2] == quantDesejada[2]) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean procura(Long[] novoValor) {
         Enumeration<Long> chaves = nodos.keys();
         while (chaves.hasMoreElements()){
             Long chave = chaves.nextElement();
@@ -117,13 +106,6 @@ public class ArvoreSeisNodos {
             }
         }
         return false;       
-    }
-
-    public boolean encontrou(Long[] quantDesejada){
-        if (encontraQuantidadeAguaDesejada(quantDesejada) != -1) {
-            return true;
-        }
-        return false;
     }
 
     public Long[] getValores(Long i){
