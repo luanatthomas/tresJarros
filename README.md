@@ -1,7 +1,7 @@
 # Algoritmos e Estruturas de Dados II
 ## Trabalho 1 - Os três Jarros do Sheik
 ### Autora - Luana Thomas
-### Link para o [Relatório final](/T1 Alest II - Luana Thomas.pdf) do projeto.
+[Relatório final](/T1 Alest II - Luana Thomas.pdf)
 
 Você está prestando assessoria para o sheik de um emirado distante, que deseja que você resolva um problema que atormenta sua família há gerações: segundo a lenda, um ancestral do sheik recebeu de um gênio três jarros com água e devia mover a água de um para o outro até atingir quantidades estabelecidas pelo gênio. Isto nem sempre era possível, e por isso o sheik é atormentado por dúvidas.
 Agora o problema foi passado para você, e você deve fazer o que puder, sempre respeitando as regras originais do problema:
